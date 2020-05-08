@@ -16,9 +16,27 @@ const Select = styled.select`
   border: 1px solid #e1e1e1;
   -webkit-appearance: none;
 `;
-const Radio = styled.input`
+const InputRadio = styled.input`
   margin: 0 1rem;
 `;
+const Boton = styled.button`
+  background-color: #00838f;
+  font-size: 16px;
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  margin-top: 2rem;
+  transition: background-color 0.4s ease;
+  &:hover {
+    background-color: #26c6da;
+    cursor: pointer;
+  }
+`;
+
 const Formulario = () => {
   return (
     <form>
@@ -49,10 +67,10 @@ const Formulario = () => {
       </Campo>
       <Campo>
         <Label htmlFor="">Plan </Label>
-        <Radio type="radio" name="plan" value="basico" />
-        <Radio type="radio" name="plan" value="completo" />
+        <InputRadio type="radio" name="plan" value="basico" />
+        <InputRadio type="radio" name="plan" value="completo" />
       </Campo>
-      <button>Cotizar</button>
+      <Boton>Cotizar</Boton>
     </form>
   );
 };
