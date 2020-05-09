@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { obtenerDiferenciaYear } from '../helper';
 
 const Campo = styled.div`
   display: flex;
@@ -72,11 +73,21 @@ const Formulario = () => {
       return;
     }
     guardarError(false);
+
+    // base del seguro = 2000
+    let resultado = 2000;
+
+    // obtener la cantidad de años
+    const diferencia = obtenerDiferenciaYear(year);
+    console.log(diferencia);
+
     //variacion por años 3%
+    resultado -= (diferencia * 3 * resultado) / 100;
+    console.log(resultado);
 
-    //variacion por marca 5, 15, 30
+    //variacion por marca 5, 15, 30 %
 
-    //variacion por plan 20, 50 
+    //variacion por plan 20, 50 %
 
     // total valores
   };
