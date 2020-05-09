@@ -10,7 +10,7 @@ const Contenedor = styled.div`
 `;
 
 const ContenedorFormulario = styled.div`
-  background-color: #e1b4d5cb;
+  background-color: #e1b4d561;
   padding: 3rem;
 `;
 

@@ -20,7 +20,7 @@ const InputRadio = styled.input`
   margin: 0 1rem;
 `;
 const Boton = styled.button`
-  background-color: #00838f;
+  background-color: lightseagreen;
   font-size: 16px;
   width: 100%;
   padding: 1rem;
@@ -32,11 +32,18 @@ const Boton = styled.button`
   margin-top: 2rem;
   transition: background-color 0.4s ease;
   &:hover {
-    background-color: #26c6da;
+    background-color: #6cdae7;
     cursor: pointer;
   }
 `;
-
+const Error = styled.div`
+  background-color: salmon;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
 const Formulario = () => {
   // state para capturar info
   const [datos, guardarDatos] = useState({
@@ -44,8 +51,10 @@ const Formulario = () => {
     year: '',
     plan: 'basico',
   });
+  // state error validacion
+  const [error, guardarError] = useState(false);
 
-  //extraer valores del state
+  // extraer valores del state
   const { marca, year, plan } = datos;
 
   // leer datos del form y colocarlos al nuevo state
@@ -56,8 +65,25 @@ const Formulario = () => {
     });
   };
 
+  const cotizarSeguro = (e) => {
+    e.preventDefault();
+    if (marca.trim() === '' || year.trim() === '' || plan.trim() === '') {
+      guardarError(true);
+      return;
+    }
+    guardarError(false);
+    //variacion por años 3%
+
+    //variacion por marca 5, 15, 30
+
+    //variacion por plan 20, 50 
+
+    // total valores
+  };
+
   return (
-    <form>
+    <form onSubmit={cotizarSeguro}>
+      {error ? <Error>Todos los campos son obligatorios</Error> : null}
       <Campo>
         <Label htmlFor="">Marca </Label>
         <Select name="marca" value={marca} onChange={obtenerInformacion}>
@@ -92,6 +118,8 @@ const Formulario = () => {
           checked={plan === 'basico'}
           onChange={obtenerInformacion}
         />
+        <Label>Básico</Label>
+
         <InputRadio
           type="radio"
           name="plan"
@@ -99,8 +127,9 @@ const Formulario = () => {
           checked={plan === 'completo'}
           onChange={obtenerInformacion}
         />
+        <Label>Completo</Label>
       </Campo>
-      <Boton>Cotizar</Boton>
+      <Boton type="submit">Cotizar</Boton>
     </form>
   );
 };
