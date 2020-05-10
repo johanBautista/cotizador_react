@@ -21,7 +21,7 @@ const InputRadio = styled.input`
   margin: 0 1rem;
 `;
 const Boton = styled.button`
-  background-color: lightseagreen;
+  background-color: #20b2aa99;
   font-size: 16px;
   width: 100%;
   padding: 1rem;
@@ -33,7 +33,7 @@ const Boton = styled.button`
   margin-top: 2rem;
   transition: background-color 0.4s ease;
   &:hover {
-    background-color: #6cdae7;
+    background-color: lightseagreen;
     cursor: pointer;
   }
 `;

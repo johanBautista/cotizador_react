@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Header from './Components/Header';
 import Formulario from './Components/Formulario';
 import Resumen from './Components/Resumen';
+import Resultado from './Components/Resultado';
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -25,13 +26,14 @@ function App() {
       plan: '',
     },
   });
-  const { datos } = resumen;
+  const { cotizacion, datos } = resumen;
   return (
     <Contenedor>
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
         <Formulario guardarResumen={guardarResumen} />
         <Resumen datos={datos} />
+        <Resultado cotizacion={cotizacion} />
       </ContenedorFormulario>
     </Contenedor>
   );
