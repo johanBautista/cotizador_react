@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Formulario from './Components/Formulario';
 import Resumen from './Components/Resumen';
 import Resultado from './Components/Resultado';
+import Spinner from './Components/Spinner';
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -26,14 +27,22 @@ function App() {
       plan: '',
     },
   });
+
+  // state del resultado/spinner
+  const [cargando, guardarCargando] = useState(false);
   const { cotizacion, datos } = resumen;
   return (
     <Contenedor>
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
-        <Formulario guardarResumen={guardarResumen} />
+        <Formulario
+          guardarResumen={guardarResumen}
+          guardarCargando={guardarCargando}
+        />
+        {cargando ? <Spinner /> : null}
         <Resumen datos={datos} />
-        <Resultado cotizacion={cotizacion} />
+        {/* mostrar un condicional entre el resultado y el spinner  */}
+        {!cargando ? <Resultado cotizacion={cotizacion} /> : null}
       </ContenedorFormulario>
     </Contenedor>
   );

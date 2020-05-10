@@ -45,7 +45,7 @@ const Error = styled.div`
   text-align: center;
   margin-bottom: 2rem;
 `;
-const Formulario = ({ guardarResumen }) => {
+const Formulario = ({ guardarResumen, guardarCargando }) => {
   // state para capturar info
   const [datos, guardarDatos] = useState({
     marca: '',
@@ -85,18 +85,24 @@ const Formulario = ({ guardarResumen }) => {
 
     //variacion por marca 5, 15, 30 %
     resultado = calcularMarca(marca) * resultado;
-    console.log(resultado);
 
     //variacion por plan 20, 50 %
     const incrementoPlan = obtenerPlan(plan);
     resultado = parseFloat(incrementoPlan * resultado).toFixed(2);
 
-    guardarResumen({
-      cotizacion: resultado,
-      datos,
-    });
-    // total valores
-    console.log(resultado);
+    // total valores con activacion del spinner
+    // activa el spinner
+    guardarCargando(true);
+    // tiempo de 'respuesta'
+    setTimeout(() => {
+      // ocultar el spinner
+      guardarCargando(false);
+      // pasar los datos de la cotizacion
+      guardarResumen({
+        cotizacion: resultado,
+        datos,
+      });
+    }, 2000);
   };
 
   return (
