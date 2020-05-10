@@ -32,9 +32,6 @@ function App() {
       <ContenedorFormulario>
         <Formulario guardarResumen={guardarResumen} />
         <Resumen datos={datos} />
-        {/* {datos ? <Resumen /> : null}  para ni hacer un ternario comp-condicional en app
-        podemos enviar datos por prop al comp Resumen y desde alli aplicar la condicion de 
-        mostrarse ono segun si hay datos */}
       </ContenedorFormulario>
     </Contenedor>
   );
